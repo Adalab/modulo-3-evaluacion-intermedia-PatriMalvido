@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [student, setStudent] = useState([]); //para guardar los datos devueltos por al API
   const [newStudent, setNewStudent] = useState({});
+  const [filterStudent, setFilterStudent] = useState ('');
 
   useEffect(() => {
     callToApi().then((response) => {
@@ -15,7 +16,14 @@ function App() {
   //-----------------------------
 
   const renderStudent = () => {
-    return student.map((eachStudent, index) => {
+
+    return student
+    .filter ((eachStudent)=>{
+      return eachStudent.name
+      .toLocaleLowerCase()
+      .includes (filterStudent.toLocaleLowerCase());
+    })
+    .map((eachStudent, index) => {
       return (
         <tr key={index}>
           <td>{eachStudent.name}</td>
@@ -25,20 +33,25 @@ function App() {
       );
     });
   };
+//---------------------------------------------
+
+const handleFilterStudentName= (ev)=> {
+setFilterStudent(ev.currentTarget.value);
+}
+
   //--------------------------------------------
+
   const handleInput = (ev) => {
     setNewStudent({
       ...newStudent,
       [ev.currentTarget.id]: ev.currentTarget.value,
     });
-    console.log(ev.currentTarget.value);
   };
 
   //--------------------------------------------------
 
   const handleClickNew = () => {
-   
-
+  
     setStudent([...student, newStudent]);
     setNewStudent({});
     
@@ -48,12 +61,12 @@ function App() {
     <div>
       <h1>Lista de Adalabers</h1>
       <main>
-      <form action="" className="filters">
+      <form action="" onSubmit={(ev) => ev.preventDefault()} className="filters">
           <label className="filters__text" htmlFor="name">
             Nombre:
             <input
-              //onChange={handleChangeFilterName}
-              //value={filterName}
+              onChange={handleFilterStudentName}
+              
               type="text"
               className="form__input-text"
               name="name"
