@@ -3,8 +3,8 @@ import callToApi from '../services/api';
 import {useEffect, useState} from 'react'
 
 function App() {
-  const [searchName, setSearchName]= useState('');
-  const [student, setStudent] = useState ([]);
+  const [searchName, setSearchName]= useState(''); //para el input de busqueda
+  const [student, setStudent] = useState ([]); //para guardar los nombres devueltos por al API
 
   useEffect(()=> {
     callToApi(searchName).then ((response)=>{
@@ -13,36 +13,32 @@ function App() {
   }, [searchName]);
 
 
+//-----------------------------
 
-  
+const renderStudent =()=> {
+  return student.map((student,index)=>{
+    return <tr key={index}>{student.name}</tr>;
+  });
+};
+
   return (
     <div>
       <h1>Hola mundo</h1>
       <table>
         <thead>
           <tr>
-            <th>Columna 1</th>
-            <th>Columna 2</th>
-            <th>Columna 3</th>
+            <th>Nombre</th>
+            <th>Tutora</th>
+            <th>Especilidad</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>Columna1 fila 1</td>
-            <td>Columna2</td>
-            <td>Columna3</td>
+          <td>{renderStudent()}</td>
           </tr>
-          <tr>
-            <td>Columna fila 2</td>
-            <td>Columna</td>
-            <td>Columna</td>
-          </tr>
-          <tr>
-            <td>Columna fila 3</td>
-            <td>Columna</td>
-            <td>Columna</td>
-          </tr>
+         
+       
         </tbody>
       </table>
     </div>
