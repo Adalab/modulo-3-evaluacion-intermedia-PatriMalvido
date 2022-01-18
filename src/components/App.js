@@ -66,7 +66,6 @@ setFilterStudent(ev.currentTarget.value);
             Nombre:
             <input
               onChange={handleFilterStudentName}
-              
               type="text"
               className="form__input-text"
               name="name"
@@ -74,11 +73,11 @@ setFilterStudent(ev.currentTarget.value);
               placeholder="Ej: MariCarmen"
             />
           </label>
-          {/* <label className="filters__text" htmlFor="counselor">
+           <label className="filters__text" htmlFor="counselor">
             Escoge una tutora:
             <select
-              onChange={handleChangeFilterCounselor}
-              value={filterCounselor}
+              //onChange={handleChangeFilterCounselor}
+              //value={filterCounselor}
               className="form__input-text"
               name="counselor"
               id="counselor"
@@ -87,12 +86,12 @@ setFilterStudent(ev.currentTarget.value);
               <option value="Yanelis">Yanelis</option>
               <option value="Dayana">Dayana</option>
               <option value="Iván">Iván</option>
-              <option value="Miguel">Miguel</option>
+              
             </select>
-          </label> */}
+          </label>
         </form>
-      <section>
-        <table>
+      <section className='data'>
+        <table className='table'>
           <thead>
             <tr>
               <th>Nombre</th>
@@ -104,40 +103,40 @@ setFilterStudent(ev.currentTarget.value);
         </table>
       </section>
 
-      <section>
-        <h2>Añadir una adalaber</h2>
+      <section className='add'>
+        <h2 className='add__title'>Añadir una adalaber</h2>
         <form action="" onSubmit={(ev) => ev.preventDefault()}>
-          <label htmlFor="name">
+          <label className='add__label' htmlFor="name">
             Nombre:
             <input
               type="text"
               name="name"
               id="name"
               onChange={handleInput}
-              
+              className='form__input-text'
             />
           </label>
-          <label htmlFor="counselor">
+          <label className='add__label' htmlFor="counselor">
             Tutora:
             <input
               type="text"
               name="counselor"
               id="counselor"
               onChange={handleInput}
-              
+              className="form__input-text"
             />
           </label>
-          <label htmlFor="speciality">
+          <label className='add__label' htmlFor="speciality">
             Especialidad:
             <input
               type="text"
               name="speciality"
               id="speciality"
               onChange={handleInput}
-              
+              className="form__input-text"
             />
           </label>
-          <input onClick={handleClickNew} type="submit" value="añadir" />
+          <input className='form__btn' onClick={handleClickNew} type="submit" value="Añadir" />
         </form>
       </section>
       </main>
