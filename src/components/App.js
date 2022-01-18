@@ -46,7 +46,7 @@ const handleSubmit = (ev)=> {
 
   return (
     <div>
-      <h1>Hola mundo</h1>
+      <h1>Lista de Adalabers</h1>
       <table>
         <thead>
           <tr>
