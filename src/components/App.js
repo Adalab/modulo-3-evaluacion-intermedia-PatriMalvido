@@ -47,6 +47,37 @@ function App() {
   return (
     <div>
       <h1>Lista de Adalabers</h1>
+      <main>
+      <form action="" className="filters">
+          <label className="filters__text" htmlFor="name">
+            Nombre:
+            <input
+              //onChange={handleChangeFilterName}
+              //value={filterName}
+              type="text"
+              className="form__input-text"
+              name="name"
+              id="name"
+              placeholder="Ej: MariCarmen"
+            />
+          </label>
+          {/* <label className="filters__text" htmlFor="counselor">
+            Escoge una tutora:
+            <select
+              onChange={handleChangeFilterCounselor}
+              value={filterCounselor}
+              className="form__input-text"
+              name="counselor"
+              id="counselor"
+            >
+              <option value="All">Cualquiera</option>
+              <option value="Yanelis">Yanelis</option>
+              <option value="Dayana">Dayana</option>
+              <option value="Iván">Iván</option>
+              <option value="Miguel">Miguel</option>
+            </select>
+          </label> */}
+        </form>
       <section>
         <table>
           <thead>
@@ -96,6 +127,7 @@ function App() {
           <input onClick={handleClickNew} type="submit" value="añadir" />
         </form>
       </section>
+      </main>
     </div>
   );
 }
