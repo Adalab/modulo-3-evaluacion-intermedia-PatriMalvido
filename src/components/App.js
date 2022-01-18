@@ -1,30 +1,29 @@
 import '../styles/App.css';
 import callToApi from '../services/api';
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react';
 
 function App() {
- 
-  const [student, setStudent] = useState ([]); //para guardar los datos devueltos por al API
- 
- 
+  const [student, setStudent] = useState([]); //para guardar los datos devueltos por al API
 
-  useEffect(()=> {
-    callToApi().then ((response)=>{
+  useEffect(() => {
+    callToApi().then((response) => {
       setStudent(response);
     });
   }, []);
 
+  //-----------------------------
 
-//-----------------------------
-
-const renderStudent =()=> {
-  return student.map((eachStudent,index)=>{
-    return  <tr key={index}>{eachStudent.name}</tr>
- 
-  });
-};
-
-
+  const renderStudent = () => {
+    return student.map((eachStudent, index) => {
+      return (
+        <tr key={index}>
+          <td>{eachStudent.name}</td>
+          <td>{eachStudent.counselor}</td>
+          <td>{eachStudent.speciality}</td>
+        </tr>
+      );
+    });
+  };
 
   return (
     <div>
@@ -38,15 +37,10 @@ const renderStudent =()=> {
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-          <td>{renderStudent()}</td>
-          <td></td>
-          <td>columna 3</td>
-       
-       </tr>
-        </tbody>
+        <tbody>{renderStudent()}</tbody>
       </table>
+
+    
     </div>
   );
 }
