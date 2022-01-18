@@ -9,7 +9,6 @@ function App() {
   useEffect(() => {
     callToApi().then((response) => {
       setStudent(response.results);
-     
     });
   }, []);
 
@@ -28,19 +27,21 @@ function App() {
   };
   //--------------------------------------------
   const handleInput = (ev) => {
-    setNewStudent ({
+    setNewStudent({
       ...newStudent,
-      [ev.currentTarget.id]:ev.currentTarget.value,
+      [ev.currentTarget.id]: ev.currentTarget.value,
     });
-    console.log(ev.currentTarget.id);
+    console.log(ev.currentTarget.value);
   };
 
   //--------------------------------------------------
 
-  const handleClickNew = (ev) => {
-    console.log(newStudent);
+  const handleClickNew = () => {
+   
+
     setStudent([...student, newStudent]);
     setNewStudent({});
+    
   };
 
   return (
@@ -61,38 +62,38 @@ function App() {
 
       <section>
         <h2>Añadir una adalaber</h2>
-        <form action="" onSubmit={(ev)=> ev.preventDefault()}>
+        <form action="" onSubmit={(ev) => ev.preventDefault()}>
           <label htmlFor="name">
             Nombre:
             <input
               type="text"
-              name="newName"
-              id="newName"
+              name="name"
+              id="name"
               onChange={handleInput}
-              value={student.name}
+              
             />
           </label>
           <label htmlFor="counselor">
             Tutora:
             <input
               type="text"
-              name="newCounselor"
-              id="newCounselor"
+              name="counselor"
+              id="counselor"
               onChange={handleInput}
-              value={student.counselor}
+              
             />
           </label>
           <label htmlFor="speciality">
             Especialidad:
             <input
               type="text"
-              name="newSpeciality"
-              id="newSpeciality"
+              name="speciality"
+              id="speciality"
               onChange={handleInput}
-              value={student.speciality}
+              
             />
           </label>
-          <button onClick={handleClickNew}>Añadir una nueva adalaber</button>
+          <input onClick={handleClickNew} type="submit" value="añadir" />
         </form>
       </section>
     </div>
