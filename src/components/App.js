@@ -3,23 +3,28 @@ import callToApi from '../services/api';
 import {useEffect, useState} from 'react'
 
 function App() {
-  const [searchName, setSearchName]= useState(''); //para el input de busqueda
-  const [student, setStudent] = useState ([]); //para guardar los nombres devueltos por al API
+ 
+  const [student, setStudent] = useState ([]); //para guardar los datos devueltos por al API
+ 
+ 
 
   useEffect(()=> {
-    callToApi(searchName).then ((response)=>{
+    callToApi().then ((response)=>{
       setStudent(response);
     });
-  }, [searchName]);
+  }, []);
 
 
 //-----------------------------
 
 const renderStudent =()=> {
-  return student.map((student,index)=>{
-    return <tr key={index}>{student.name}</tr>;
+  return student.map((eachStudent,index)=>{
+    return  <tr key={index}>{eachStudent.name}</tr>
+ 
   });
 };
+
+
 
   return (
     <div>
@@ -36,9 +41,10 @@ const renderStudent =()=> {
         <tbody>
           <tr>
           <td>{renderStudent()}</td>
-          </tr>
-         
+          <td></td>
+          <td>columna 3</td>
        
+       </tr>
         </tbody>
       </table>
     </div>
