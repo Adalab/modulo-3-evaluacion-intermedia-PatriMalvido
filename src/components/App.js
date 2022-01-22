@@ -67,7 +67,7 @@ setFilterStudent(ev.currentTarget.value);
             <input
               onChange={handleFilterStudentName}
               type="text"
-              className="form__input-text"
+              className="input__text"
               name="name"
               id="name"
               placeholder="Ej: MariCarmen"
@@ -78,7 +78,7 @@ setFilterStudent(ev.currentTarget.value);
             <select
               //onChange={handleChangeFilterCounselor}
               //value={filterCounselor}
-              className="form__input-text"
+              className="input__text"
               name="counselor"
               id="counselor"
             >
@@ -92,7 +92,7 @@ setFilterStudent(ev.currentTarget.value);
         </form>
       <section className='data'>
         <table className='table'>
-          <thead>
+          <thead className='thead'>
             <tr>
               <th>Nombre</th>
               <th>Tutora</th>
@@ -113,7 +113,7 @@ setFilterStudent(ev.currentTarget.value);
               name="name"
               id="name"
               onChange={handleInput}
-              className='form__input-text'
+              className='input__text'
             />
           </label>
           <label className='add__label' htmlFor="counselor">
@@ -123,7 +123,7 @@ setFilterStudent(ev.currentTarget.value);
               name="counselor"
               id="counselor"
               onChange={handleInput}
-              className="form__input-text"
+              className="input__text"
             />
           </label>
           <label className='add__label' htmlFor="speciality">
@@ -133,10 +133,10 @@ setFilterStudent(ev.currentTarget.value);
               name="speciality"
               id="speciality"
               onChange={handleInput}
-              className="form__input-text"
+              className="input__text"
             />
           </label>
-          <input className='form__btn' onClick={handleClickNew} type="submit" value="Añadir" />
+          <input className='btn' onClick={handleClickNew} type="submit" value="Añadir" />
         </form>
       </section>
       </main>
