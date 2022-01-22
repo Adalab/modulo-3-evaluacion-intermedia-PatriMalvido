@@ -6,6 +6,7 @@ function App() {
   const [student, setStudent] = useState([]); //para guardar los datos devueltos por al API
   const [newStudent, setNewStudent] = useState({});
   const [filterStudent, setFilterStudent] = useState ('');
+  const [selectedCounselor, setSelectedCounselor]= useState('');
 
   useEffect(() => {
     callToApi().then((response) => {
@@ -22,6 +23,10 @@ function App() {
       return eachStudent.name
       .toLocaleLowerCase()
       .includes (filterStudent.toLocaleLowerCase());
+    })
+    .filter ((eachStudent)=>{
+      return eachStudent.counselor.toLocaleLowerCase()
+      .includes(selectedCounselor.toLocaleLowerCase());
     })
     .map((eachStudent, index) => {
       return (
@@ -56,6 +61,12 @@ setFilterStudent(ev.currentTarget.value);
     setNewStudent({});
     
   };
+  //-----------------------------------------------------
+
+  const handleChangeFilterCounselor =(ev)=>{
+    const selectedCounselorUser = ev.currentTarget.value;
+    setSelectedCounselor(selectedCounselorUser);
+  }
 
   return (
     <div>
@@ -76,13 +87,12 @@ setFilterStudent(ev.currentTarget.value);
            <label className="filters__text" htmlFor="counselor">
             Escoge una tutora:
             <select
-              //onChange={handleChangeFilterCounselor}
-              //value={filterCounselor}
+              onChange={handleChangeFilterCounselor}
               className="input__text"
               name="counselor"
               id="counselor"
             >
-              <option value="All">Cualquiera</option>
+              <option value="">Cualquiera</option>
               <option value="Yanelis">Yanelis</option>
               <option value="Dayana">Dayana</option>
               <option value="Iván">Iván</option>
