@@ -12,6 +12,7 @@ function App() {
     callToApi().then((response) => {
       setStudent(response.results);
     });
+  
   }, []);
 
   //-----------------------------
@@ -31,9 +32,16 @@ function App() {
     .map((eachStudent, index) => {
       return (
         <tr key={index}>
-          <td>{eachStudent.name}</td>
+          <td >{eachStudent.name}</td>
           <td>{eachStudent.counselor}</td>
           <td>{eachStudent.speciality}</td>
+          <td>
+            {eachStudent.social_networks.map((eachSocial,index) =>(
+              
+                <a key={index} href={eachSocial.url} > {eachSocial.name}</a>
+            
+            ))};
+          </td>
         </tr>
       );
     });
@@ -107,6 +115,7 @@ setFilterStudent(ev.currentTarget.value);
               <th>Nombre</th>
               <th>Tutora</th>
               <th>Especilidad</th>
+              <th>Redes Sociales</th>
             </tr>
           </thead>
           <tbody>{renderStudent()}</tbody>
